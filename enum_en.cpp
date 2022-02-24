@@ -10,9 +10,10 @@ void subnum(string str, int types, int length)
 	if(length == 0) answer.push_back(str);
 	else {
 		length--;
+		char c = 'a';
 		for(int i = 0; i < types; i++) {
-			string c = to_string(i);
 			subnum(str + c, types, length);
+			c++;
 		}
 	}
 }
@@ -56,7 +57,7 @@ void update(string ansStr, int eat, int bite)
 
 	answer = next_answer;
 	cout << answer.size() << " candidates: " << endl;
-	for(string x : answer) cout << x << " ";
+	if(answer.size() <= 200) for(string x : answer) cout << x << " ";
 	cout << "\n";
 
 }
@@ -69,7 +70,7 @@ int main()
 		cout << "Press the number of types and length: ";
 		cin >> t >> l;
 
-		if(t < 0 || t > 10) cerr << "Sorry. The number of types must be >= 1 and <= 10." << endl;
+		if(t < 0 || t > 26) cerr << "Sorry. The number of types must be >= 1 and <= 26." << endl;
 		if(l <= 0) cerr << "The length must be a positive integer." << endl;
 		else break;
 	}

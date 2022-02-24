@@ -2,14 +2,26 @@
 
 - 重複ありヌメロン
 
-- 数列とイート数, バイト数から候補を全列挙するプログラム
+- 数列 (文字列) とイート数, バイト数から候補を全列挙するプログラム
 
-- 現状 11 種類以上の解析には対応していません。
+	- enum.cpp
 
-- 今後、最適解も考えてみるかも
+	    通常の数字ヌメロン, 0 ～ 9 の 10 種類まで
+
+	- enum_en.cpp
+
+	    英単語ヌメロン, a ～ z の 26 種類まで
+
+- 現状 27 種類以上の解析には対応していません。
+
+- 全探索しているので、条件によっては死ぬ程時間が掛かる場合があります。( O(type^length) )
+
+- 今後、ミニマックス法にも手を出してみるかも
 
 
 ## 一例
+
+### enum.cpp
 
 0 ～ 9 の 10 種類で構成された 3 桁の整数の場合
 
@@ -36,4 +48,43 @@ Press numbers, # of eats, and # of bites: 961 3 0
 1 candidates:
 961
 The answer is 961.
+```
+
+
+### enum_en.cpp
+
+- 英単語ヌメロン
+
+- a ～ z の 26 種類で構成された 4 文字の英単語の場合
+
+```
+Press the number of types and length: 26 4
+Press numbers, # of eats, and # of bites: aiue 0 1
+133672 candidates:
+
+Continue? [y/n] : y
+Press numbers, # of eats, and # of bites: with 0 0
+65037 candidates:
+
+Continue? [y/n] : y
+Press numbers, # of eats, and # of bites: love 0 0
+26144 candidates:
+
+Continue? [y/n] : y
+Press numbers, # of eats, and # of bites: back 2 0
+722 candidates:
+
+Continue? [y/n] : y
+Press numbers, # of eats, and # of bites: bard 2 1
+28 candidates:
+racd dark bazr bayr baxr basr baqr bapr banr bamr bajr bagr bafr badz bady badx bads badq badp badn badm badj badg badf badb bada babr baar
+Continue? [y/n] : y
+Press numbers, # of eats, and # of bites: bady 1 1
+2 candidates:
+dark racd
+Continue? [y/n] : y
+Press numbers, # of eats, and # of bites: dark 4 0
+1 candidates:
+dark
+The answer is dark.
 ```
